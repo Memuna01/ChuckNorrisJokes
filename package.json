@@ -1,0 +1,31 @@
+{
+  "name": "chucknorrisjokes",
+  "version": "1.0.0",
+  "description": "command line app to fetch random chuck norris jokes",
+  "main": "index.js",
+  "preferGlobal": true,
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [
+    "cli",
+    "chucknorris"
+  ],
+  "author": "Memuna Haruna",
+  "license": "ISC",
+    "bin": {
+    "ChuckNorrisJokes": "./index.js"
+  },
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "clear": "0.0.1",
+    "clui": "^0.3.1",
+    "figlet": "^1.2.0",
+    "inquirer": "^3.0.6",
+    "lodash": "^4.17.4",
+    "minimist": "^1.2.0",
+    "preferences": "^0.2.1",
+    "simple-git": "^1.70.0",
+    "touch": "^1.0.0"
+  }
+}
