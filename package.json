@@ -1,11 +1,12 @@
 {
   "name": "chucknorrisjokes",
   "version": "1.0.0",
-  "description": "command line app to fetch random chuck norris jokes",
+  "description": "A command line application to fetch random chuck norris jokes",
   "main": "index.js",
   "preferGlobal": true,
   "scripts": {
-    "test": "node index.js"
+    "test": "no tests",
+    "start": "node index.js"
   },
   "keywords": [
     "cli",
@@ -13,8 +14,8 @@
   ],
   "author": "Memuna Haruna",
   "license": "ISC",
-    "bin": {
-    "ChuckNorrisJokes": "./index.js"
+  "bin": {
+      "ChuckNorrisJokes": "./index.js"
   },
   "dependencies": {
     "chalk": "^1.1.3",

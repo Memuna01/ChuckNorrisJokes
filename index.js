@@ -4,17 +4,51 @@ var CLI         = require('clui'); // draws command line tables, gauges and spin
 var figlet      = require('figlet'); // creates ASCII art from text
 var inquirer    = require('inquirer'); // creates interactive command line user interface
 var minimist    = require('minimist'); // parses argument options
-var Preferences = require('preferences'); //manage CLI application encrypted preferences
 var Spinner     = CLI.Spinner;
-var _           = require('lodash'); // Javascript utility library
-var git         = require('simple-git')(); // runs Git commands in a Node.js application
-var touch       = require('touch'); // implementation of the *Nix touch command
-var fs          = require('fs');
+var axios       = require('axios'); // Promise based HTTP client for the browser and node.js
 
 
-clear();
+clear(); // clears the console
+// displays the name of my application
 console.log(
   chalk.yellow(
     figlet.textSync('ChuckNorris', { horizontalLayout: 'full' })
   )
 );
+
+function getUserInput(callback){
+  var questions = [
+    {
+      name: 'getJokes',
+      type: 'input',
+      message: 'Would you like to read a Chuck Norris joke?(yes/no):',
+      validate: function( value ) {
+        if (value.length) {
+          return true;
+        } else {
+          return 'Please enter your request:';
+        }
+      }
+    }
+  ];
+
+  //inquirer creates interactive user interface and passes value received as arguments to the getUserInput function
+  inquirer.prompt(questions).then(callback);
+}
+
+(function fetchChuckNorrisJoke(){
+    getUserInput(function(){
+        if(JSON.stringify(arguments[0]) === JSON.stringify({getJokes: 'yes'})){
+            var status = new Spinner('Fetching a Chuck Norris joke, please wait...');
+            status.start();
+        axios.get('https://api.chucknorris.io/jokes/random')
+        .then(function(response){
+            status.stop();
+            console.log(chalk.green(response.data.value)); // displays the chuck norris joke
+            //console.log(response.status); // displays response status e.g 200
+        });         
+      }else{
+          process.exit();
+      }
+    });
+})();
