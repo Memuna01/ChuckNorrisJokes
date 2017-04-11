@@ -15,9 +15,10 @@
   "author": "Memuna Haruna",
   "license": "ISC",
   "bin": {
-      "ChuckNorrisJokes": "./index.js"
+    "ChuckNorrisJokes": "./index.js"
   },
   "dependencies": {
+    "axios": "^0.16.1",
     "chalk": "^1.1.3",
     "clear": "0.0.1",
     "clui": "^0.3.1",
@@ -27,7 +28,6 @@
     "minimist": "^1.2.0",
     "preferences": "^0.2.1",
     "simple-git": "^1.70.0",
-    "touch": "^1.0.0",
-    "axios": "^1.0.0"
+    "touch": "^1.0.0"
   }
 }
