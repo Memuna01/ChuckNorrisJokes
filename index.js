@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var chalk       = require('chalk'); // colorizes the output
 var clear       = require('clear'); // clears the terminal screen
 var CLI         = require('clui'); // draws command line tables, gauges and spinners
