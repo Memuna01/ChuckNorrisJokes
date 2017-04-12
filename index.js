@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node //shebang to make my app available globally
 
 var chalk       = require('chalk'); // colorizes the output
 var clear       = require('clear'); // clears the terminal screen
@@ -38,12 +38,17 @@ function getUserInput(callback){
   inquirer.prompt(questions).then(callback);
 }
 
+// Immediately invoked function to call my function immediately. it is neat and is also safe code i.e, 
+// it protects my code from being accessed from the global scope
+
 (function fetchChuckNorrisJoke(){
+  //Invoking my getUserInput function with a callback function passed in
+  
     getUserInput(function(){
         if(JSON.stringify(arguments[0]) === JSON.stringify({getJokes: 'yes'})){
             var status = new Spinner('Fetching a Chuck Norris joke, please wait...');
             status.start();
-        axios.get('https://api.chucknorris.io/jokes/random')
+        axios.get('https://api.chucknorris.io/jokes/random') //gets a joke from the chuck norris api at the given url
         .then(function(response){
             status.stop();
             console.log(chalk.green(response.data.value)); // displays the chuck norris joke
